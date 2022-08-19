@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Cinema;
 
 /**
@@ -10,5 +5,33 @@ package Cinema;
  * @author jacob.s
  */
 public class Seat {
-    
+
+    int seatNumber;
+    boolean checkReservation;
+
+    public Seat(boolean check, int seatNo) {
+        this.checkReservation = check;
+        this.seatNumber = seatNo;
+    }
+
+    public int getSeatNo() {
+        return this.seatNumber;
+    }
+
+    public void setSeatNo(int seatNo) {
+        this.seatNumber = seatNo;
+    }
+
+    public boolean checkReservation() {
+        return checkReservation;
+    }
+
+    public void bookReservation() {
+        this.checkReservation = true;
+    }
+
+    public void cancelReservation() {
+        this.checkReservation = false;
+    }
+
 }
