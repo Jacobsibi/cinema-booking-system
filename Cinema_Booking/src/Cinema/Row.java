@@ -5,6 +5,8 @@ import java.util.ArrayList;
 /**
  *
  * @author jacob.s
+ * 
+ * reminder: set seat ArrayList 
  */
 
 
