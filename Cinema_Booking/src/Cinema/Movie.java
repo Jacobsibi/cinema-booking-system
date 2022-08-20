@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Cinema;
 
 /**
@@ -11,4 +6,24 @@ package Cinema;
  */
 public class Movie {
     
+    private String movieName;
+    private String movieDate;
+    
+    
+    public String getMovieName() {
+        return movieName;
+    }
+
+    public void setMovieName(String movieName) {
+        this.movieName = movieName;
+    }
+
+    public String getMovieDate() {
+        return movieDate;
+    }
+
+    public void setMovieDate(String movieDate) {
+        this.movieDate = movieDate;
+    }
 }
+
