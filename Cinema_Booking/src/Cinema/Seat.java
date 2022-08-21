@@ -9,6 +9,7 @@ public class Seat {
     int seatNumber;
     boolean checkReservation;
 
+    //Seat class constructor
     public Seat(boolean check, int seatNo) {
         this.checkReservation = check;
         this.seatNumber = seatNo;
@@ -33,5 +34,4 @@ public class Seat {
     public void cancelReservation() {
         this.checkReservation = false;
     }
-
 }

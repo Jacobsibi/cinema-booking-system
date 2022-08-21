@@ -1,5 +1,7 @@
 package Cinema;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author jacob.s
@@ -8,6 +10,8 @@ public class Movie {
     
     private String movieName;
     private String movieDate;
+    private ArrayList<Seat> seating;
+    private int emptySeats;
     
     
     public String getMovieName() {
