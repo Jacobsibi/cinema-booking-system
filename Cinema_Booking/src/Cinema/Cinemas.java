@@ -8,7 +8,7 @@ package Cinema;
  * 
  * @author jacob.s
  */
-public class Cinema_Booking {
+public class Cinemas {
 
     public static void main(String[] args) {
         
