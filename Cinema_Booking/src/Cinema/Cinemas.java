@@ -30,17 +30,17 @@ public class Cinemas {
         ArrayList<FilmTheatre> theatres = new ArrayList<FilmTheatre>();
 
         // Event cinemas for testing purposes
-        FilmTheatre eventCinemas = new FilmTheatre(1, "Event Cinemas");
+        FilmTheatre eventCinemas = new FilmTheatre(1, "Star Cinemas");
         eventCinemas.rowCreation(1, 15, 15);
         theatres.add(eventCinemas);
 
         // movies for testing purposes
-        movies.add(new Movie("The Batman", "03/03/2022", theatres.get(0)));
-        movies.add(new Movie("Uncharted", "17/02/2022", theatres.get(0)));
-        movies.add(new Movie("Morbius", "10/03/2022", theatres.get(0)));
-        movies.add(new Movie("Fantastic Beasts", "07/04/2022", theatres.get(0)));
-        movies.add(new Movie("Removal Practice", "07/04/2022", theatres.get(0)));
-        movies.add(new Movie("Minions", "30/06/2022", theatres.get(0)));
+        movies.add(new Movie("Bullet Train", "03/08/2022", theatres.get(0)));
+        movies.add(new Movie("Thor: Love and Thunder", "06/07/2022", theatres.get(0)));
+        movies.add(new Movie("Nope", "11/08/2022", theatres.get(0)));
+        movies.add(new Movie("Top Gun: Maverick", "24/05/2022", theatres.get(0)));
+        movies.add(new Movie("Elvis", "23/06/2022", theatres.get(0)));
+        movies.add(new Movie("Minions: The Rise of Gru", "24/06/2022", theatres.get(0)));
 
         // Options for user
         int choice = 0;
@@ -50,13 +50,14 @@ public class Cinemas {
             //Greeting & 5 options for employee selection.
             //Option 10 for manager, username: admin, password: password
 
-            System.out.println("Welcome to Event Cinemas Booking System!\n");
-            System.out.println("For Current Shows    -    Press 1");
-            System.out.println("For Upcoming Shows   -    Press 2");
-            System.out.println("For Bookings         -    Press 3");
-            System.out.println("For Cancellations    -    Press 4");
-            System.out.println("To Exit              -    Press 5\n\n");
-            System.out.println("Manager Functions    -    Press 10!");
+            System.out.println("𝐖𝐞𝐥𝐜𝐨𝐦𝐞 𝐭𝐨 𝐒𝐭𝐚𝐫 𝐂𝐢𝐧𝐞𝐦𝐚𝐬!\n");
+            System.out.println("Now Showing!               -    Press 1");
+            System.out.println("Coming Soon!               -    Press 2");
+            System.out.println("Make a Booking!            -    Press 3");
+            System.out.println("Cancellations              -    Press 4");
+            //Login Screen -> Find in File -> Cancel Booking
+            System.out.println("Exit                       -    Press 5\n\n");
+            System.out.println("Manager Functions          -    Press 10!");
 
             //Numberformatexception for choice, must enter 1-5, no letters
             try
@@ -80,7 +81,7 @@ public class Cinemas {
                 //if choice is 1
                 case 1:
                     //greeting
-                    System.out.println("---Now showing at Event Cinemas---\n");
+                    System.out.println("---Now showing at Star Cinemas---\n");
                     //try-catch block
                     try
                     {
@@ -115,13 +116,13 @@ public class Cinemas {
                     }
 
                     //Offer option to make a booking for one of these movies
-                    System.out.println("\nPress 3 to make a booking!\n");
+                    System.out.println("\nPress 3 For Bookings!\n");
                     break;
                 /// ------------------------------------------------------------------------------------------ \\\
                 case 2:
                     //if choice is 2
                     //Greeting
-                    System.out.println("---Upcoming movies at Event Cinemas---\n");
+                    System.out.println("---Coming Soon to Star Cinemas---\n");
                     //try-catch block
                     try
                     {
