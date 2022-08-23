@@ -9,8 +9,16 @@ public class Customer {
     String firstName;
     String lastName;
     String emailAddress;
-    int phoneNo;
+    String phoneNo;
 
+    public Customer(int id, String fName, String lName, String emailAddress, String phoneNo) {
+        this.id = id;
+        this.firstName = fName;
+        this.lastName = lName;
+        this.emailAddress = emailAddress;
+        this.phoneNo = phoneNo;
+    }
+    
     public Customer(int id) {
         this.id = id;
     }
@@ -35,11 +43,11 @@ public class Customer {
         this.emailAddress = emailAddress;
     }
 
-    public int getPhoneNo() {
+    public String getPhoneNo() {
         return phoneNo;
     }
 
-    public void setPhoneNo(int phoneNo) {
+    public void setPhoneNo(String phoneNo) {
         this.phoneNo = phoneNo;
     }
 

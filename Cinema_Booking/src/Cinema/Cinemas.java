@@ -3,12 +3,11 @@ package Cinema;
 /**
  *
  * Comp603: Assignment 1
- * 
+ *
  * Cinema Booking System
- * 
+ *
  * @author jacob.s
  */
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -17,12 +16,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 
-
 public class Cinemas {
 
     public static void main(String[] args) {
-         Scanner scan = new Scanner(System.in);
-        
+        Scanner scan = new Scanner(System.in);
+
         //List of bookings, customers, movies and theatres.
         ArrayList<Booking> bookings = new ArrayList<Booking>();
         ArrayList<Customer> customers = new ArrayList<Customer>();
@@ -35,12 +33,12 @@ public class Cinemas {
         theatres.add(eventCinemas);
 
         // movies for testing purposes
-        movies.add(new Movie("Bullet Train", "03/08/2022", theatres.get(0)));
-        movies.add(new Movie("Thor: Love and Thunder", "06/07/2022", theatres.get(0)));
-        movies.add(new Movie("Nope", "11/08/2022", theatres.get(0)));
-        movies.add(new Movie("Top Gun: Maverick", "24/05/2022", theatres.get(0)));
-        movies.add(new Movie("Elvis", "23/06/2022", theatres.get(0)));
-        movies.add(new Movie("Minions: The Rise of Gru", "24/06/2022", theatres.get(0)));
+        movies.add(new Movie("BULLET TRAIN", "03/08/2022", theatres.get(0)));
+        movies.add(new Movie("THOR: LOVE AND THUNDER ", "06/07/2022", theatres.get(0)));
+        movies.add(new Movie("NOPE", "11/08/2022", theatres.get(0)));
+        movies.add(new Movie("TOP GUN: MAVERICK ", "24/05/2022", theatres.get(0)));
+        movies.add(new Movie("ELVIS", "23/06/2022", theatres.get(0)));
+        movies.add(new Movie("MINIONS: THE RISE OF GRU ", "24/06/2022", theatres.get(0)));
 
         // Options for user
         int choice = 0;
@@ -173,9 +171,48 @@ public class Cinemas {
                         Random ran = new Random();
                         int customerId = ran.nextInt(300);
 
+                        
+//                        //Query User for Login or Register if new Customer
+//                        System.out.println("Press 1 to Login");
+//                        System.out.println("Press 2 to Register");
+//                        
+                        //If user accidentially clicks Register
+                        //Return them to Login Screen
+                        
+                        
+//                        //Query user for first  & last name, email address, phone no
+//                        System.out.println("---Register---\n");
+//                        //Read firstName
+//                        String firstName = "";
+//                        System.out.print("First Name?:  ");
+//                        firstName = scan.nextLine();
+//                        //Read lastName
+//                        String lastName = "";
+//                        System.out.print("Last Name?: ");
+//                        lastName = scan.nextLine();
+//                        //Read Email Address
+//                        String email = "";
+//                        System.out.print("Email Address?: ");
+//                        email = scan.nextLine();
+//                        //Read Phone Number as String
+//                        String phoneNo = "";
+//                        System.out.print("Phone Number?: ");
+//                        phoneNo = scan.nextLine();
+
                         //Create customer object
+                       // Customer attendee = new Customer(customerId, firstName, lastName, email, phoneNo);
                         Customer attendee = new Customer(customerId);
                         customers.add(attendee);
+                        
+                        //customers.add(new Customer(customerId, firstName, lastName, email, phoneNo));
+                        
+                        
+                        //Save user details to file 
+                        
+                        
+                        //Line Spacing & Greeting
+                        System.out.println("\n Welcome to Star Cinemas ");
+                        System.out.println("---Now Showing---\n");
 
                         //print current showing movies
                         for (int i = 0; i < movies.size(); i++)
@@ -186,7 +223,7 @@ public class Cinemas {
                         }
 
                         //user selection
-                        System.out.println("---Enter movie number to select seats---\n");
+                        System.out.println("---Enter Movie Number for Seat Allocation---\n");
 
                         int chosenShow = 0;
 
@@ -309,7 +346,7 @@ public class Cinemas {
                 case 5:
                     //if choice is 5
                     //Greeting and quit
-                    System.out.println("\nThank you for using Event Cinemas Booking System!");
+                    System.out.println("\nThank you for using Star Cinemas Booking System!");
                     System.exit(0);
                 /// ------------------------------------------------------------------------------------------ \\\
 
@@ -354,7 +391,7 @@ public class Cinemas {
                                     //if 1 selected, remove a current show from file and arraylist
                                     case 1:
                                         //print current shows
-                                        System.out.println("---Remove Current Shows---");
+                                        System.out.println("---Remove Current Shows---\n");
                                         for (int i = 0; i < movies.size(); i++)
                                         {
                                             int movieNumber = i + 1;
@@ -501,4 +538,4 @@ public class Cinemas {
 
     }
 
-}       
+}
