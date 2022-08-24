@@ -7,8 +7,8 @@ package Cinema;
 public class Popcorn implements Food {
     public void itemCost() {
         System.out.println("Popcorn:");
-        System.out.println("1.   Small:  $8.50");
-        System.out.println("2.   Medium: $9.00");
+        System.out.println("1.   Small:   $8.50");
+        System.out.println("2.   Medium:  $9.00");
         System.out.println("3.   Large:  $10.00");
         System.out.println("4.   Jumbo:  $11.50");
     }

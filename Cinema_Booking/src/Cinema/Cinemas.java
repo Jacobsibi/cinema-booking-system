@@ -301,7 +301,7 @@ public class Cinemas {
                         } while (foodChoice != 0);
 
                         System.out.println("\nThank you! \n");
-                        System.out.println("---Total Cost---");
+                        System.out.println("---------Checkout---------\n");
 
                         double tCost = 0.0;
 
@@ -313,10 +313,11 @@ public class Cinemas {
                                 tCost += book.getCost();
                             }
                         }
-                        System.out.println("Customer: " + attendee.getId());
-                        System.out.println("Food & Drink Cost: " + totalCost + ".00 NZD");
-                        System.out.println("Ticket Cost: " + tCost + ".00 NZD\n\n");
-                        System.out.println("Total: " + (totalCost + tCost + ".00 NZD"));
+                        System.out.println("Customer ID: " + attendee.getId());
+                        System.out.println("Food & Drink Cost: $" + totalCost + "0");
+                        System.out.println("Ticket Cost:       $" + tCost + "0");
+                        System.out.println("-----------------------------");
+                        System.out.println("Total:             $" + (totalCost + tCost + "0 NZD\n"));
 
                 } catch (IndexOutOfBoundsException e)
                 {
