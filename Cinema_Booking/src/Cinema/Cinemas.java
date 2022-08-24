@@ -164,22 +164,19 @@ public class Cinemas {
                     //try-catch block
                     try
                     {
-                        //Greeting message
-                        System.out.println("---Create booking---\n");
-
+                        //Line Spacing & Greeting
+                        System.out.println("\nWelcome to Star Cinemas ");
+                        System.out.println("\nNow Showing:\n");
                         //Generate random customerID for booking
                         Random ran = new Random();
                         int customerId = ran.nextInt(300);
 
-                        
 //                        //Query User for Login or Register if new Customer
 //                        System.out.println("Press 1 to Login");
 //                        System.out.println("Press 2 to Register");
 //                        
                         //If user accidentially clicks Register
                         //Return them to Login Screen
-                        
-                        
 //                        //Query user for first  & last name, email address, phone no
 //                        System.out.println("---Register---\n");
 //                        //Read firstName
@@ -198,22 +195,13 @@ public class Cinemas {
 //                        String phoneNo = "";
 //                        System.out.print("Phone Number?: ");
 //                        phoneNo = scan.nextLine();
-
                         //Create customer object
-                       // Customer attendee = new Customer(customerId, firstName, lastName, email, phoneNo);
+                        // Customer attendee = new Customer(customerId, firstName, lastName, email, phoneNo);
                         Customer attendee = new Customer(customerId);
                         customers.add(attendee);
-                        
-                        //customers.add(new Customer(customerId, firstName, lastName, email, phoneNo));
-                        
-                        
-                        //Save user details to file 
-                        
-                        
-                        //Line Spacing & Greeting
-                        System.out.println("\n Welcome to Star Cinemas ");
-                        System.out.println("---Now Showing---\n");
 
+                        //customers.add(new Customer(customerId, firstName, lastName, email, phoneNo));
+                        //Save user details to file 
                         //print current showing movies
                         for (int i = 0; i < movies.size(); i++)
                         {
@@ -272,10 +260,50 @@ public class Cinemas {
 
                         } while (anotherSeat == 1);
 
-                        System.out.println("\n\n");
-                        System.out.println("Thank you! \n");
-                        System.out.println("---Total cost---");
-                        int tCost = 0;
+                        //Food & Beverages & Confectionery Information 
+                        System.out.println("\nFood & Drinks Options:\n");
+
+                        Popcorn popcorn = new Popcorn();
+                        popcorn.itemCost();
+                        popcorn.itemComboCost();
+
+                        Beverages beverage = new Beverages();
+                        beverage.itemCost();
+                        beverage.itemComboCost();
+
+                        Confectionery confectionery = new Confectionery();
+                        confectionery.itemCost();
+                        confectionery.itemComboCost();
+
+                        //food&drink selection 
+                        int foodChoice = 0;
+
+                        FoodCost foodCost = new FoodCost();
+
+                        //total food&drink cost
+                        double totalCost = 0.0;
+
+                        //loop until user inputs 0
+                        do
+                        {
+                            try
+                            {
+                                System.out.println("\nPlease enter Number Selection (Press 0 to complete)");
+                                foodChoice = Integer.valueOf(scan.nextLine());
+
+                                totalCost += foodCost.totalCost(foodChoice);
+
+                            } catch (NumberFormatException e)
+                            {
+                                System.out.println("Invalid input, please enter numbers only!");
+                            }
+
+                        } while (foodChoice != 0);
+
+                        System.out.println("\nThank you! \n");
+                        System.out.println("---Total Cost---");
+
+                        double tCost = 0.0;
 
                         //print booking cost
                         for (Booking book : bookings)
@@ -286,7 +314,9 @@ public class Cinemas {
                             }
                         }
                         System.out.println("Customer: " + attendee.getId());
-                        System.out.println("Total Payable: " + tCost + ".00 NZD\n\n");
+                        System.out.println("Food & Drink Cost: " + totalCost + ".00 NZD");
+                        System.out.println("Ticket Cost: " + tCost + ".00 NZD\n\n");
+                        System.out.println("Total: " + (totalCost + tCost + ".00 NZD"));
 
                 } catch (IndexOutOfBoundsException e)
                 {
