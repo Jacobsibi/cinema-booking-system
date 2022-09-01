@@ -18,13 +18,12 @@ import java.util.*;
 import java.text.DecimalFormat;
 
 public class Cinemas {
-    
+
     //2 decimal format
     private static final DecimalFormat df = new DecimalFormat("0.00");
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        
 
         //List of bookings, customers, movies and theatres.
         ArrayList<Booking> bookings = new ArrayList<Booking>();
@@ -66,6 +65,9 @@ public class Cinemas {
 
         // Options for user
         int choice = 0;
+
+        //movie Name for receipt printing
+        String moviePrint = "";
 
         do
         {
@@ -137,12 +139,12 @@ public class Cinemas {
                     {
                         e.printStackTrace();
                     }
-                    
+
                     System.out.println("//------------Extra Details------------\\\\" + "\n");
 
                     for (int k = 0; k < movies.size(); k++)
                     {
-                        
+
                         System.out.println(movies.get(k).getMovieName());
                         System.out.println(movies.get(k).getDescription());
                         System.out.println("");
@@ -249,6 +251,8 @@ public class Cinemas {
                             //create booking with customer and chosen movie
                             Booking book = new Booking(attendee, movies.get(chosenShow - 1));
 
+                            //store movie name for Receipt printing
+                            moviePrint = book.getMovie().getMovieName();
                             //reserve seat if free, if not then display not available.
                             if (book.bookSeat(row - 1, seat - 1))
                             {
@@ -339,6 +343,7 @@ public class Cinemas {
                         System.out.println("----------Checkout----------\n");
                         System.out.println("Tickets for " + cusFirstName.toUpperCase() + "!");
                         System.out.println("Customer ID: " + attendee.getId() + "\n");
+                        System.out.println("Movie: " + moviePrint + "\n");
                         for (int i = 0; i < rowList.size(); i++)
                         {
                             System.out.println("Row: " + rowList.get(i) + ", Seat: " + seatList.get(i) + " ");
@@ -346,12 +351,36 @@ public class Cinemas {
                         System.out.println("Food & Drink Cost: $" + df.format(totalCost));
                         System.out.println("Ticket Cost:       $" + df.format(tCost));
                         System.out.println("-----------------------------");
-                        
+
                         //calculate total cost
                         double totalPrice = tCost + totalCost;
                         System.out.println("Total:             $" + (df.format(totalPrice) + " NZD\n"));
 
-                        
+                        //write ticket to file
+                        try
+                        {   //create writer for upcoming movies text file
+                            BufferedWriter bw = new BufferedWriter(new FileWriter("./resources/ticket.txt", false));
+
+                            //write new upcoming show & date to file
+                            bw.write("----Ticket Receipt----\n");
+                            bw.write("Tickets for " + cusFirstName.toUpperCase() + "!\n");
+                            bw.write("Customer ID: " + attendee.getId() + "\n");
+                            bw.write("Movie: " + moviePrint + "\n");
+                            for (int i = 0; i < rowList.size(); i++)
+                            {
+                                bw.write("Row: " + rowList.get(i) + ", Seat: " + seatList.get(i) + " \n");
+                            }
+                            bw.write("Food & Drink Cost: $" + df.format(totalCost) + "\n");
+                            bw.write("Ticket Cost:       $" + df.format(tCost) + "\n");
+                            bw.write("-----------------------------\n");
+                            bw.write("Total:             $" + (df.format(totalPrice) + " NZD\n"));
+
+                            bw.close();
+
+                        } catch (Exception e) //Catch IOexception
+                        {
+                            e.printStackTrace();
+                        }
                 } catch (IndexOutOfBoundsException e)
                 {
                     System.out.println("Invalid input! Try again \n");

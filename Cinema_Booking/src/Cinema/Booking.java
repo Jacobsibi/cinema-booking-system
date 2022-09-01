@@ -38,6 +38,15 @@ public class Booking {
         return customer;
     }
 
+    public Movie getMovie() {
+        return movie;
+    }
+
+    public void setMovie(Movie movie) {
+        this.movie = movie;
+    }
+    
+
     public int getCost() {
         if (movie.getTheatre().getRows().get(rowNo).getRowLetter() == 1)
         {

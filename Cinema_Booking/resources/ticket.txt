@@ -1,0 +1,9 @@
+----Ticket Receipt----
+Tickets for JACOB!
+Customer ID: 155
+Movie: THOR: LOVE AND THUNDER 
+Row: 2, Seat: 2 
+Food & Drink Cost: $12.50
+Ticket Cost:       $20.00
+-----------------------------
+Total:             $32.50 NZD
