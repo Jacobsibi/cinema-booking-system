@@ -358,10 +358,10 @@ public class Cinemas {
 
                         //write ticket to file
                         try
-                        {   //create writer for upcoming movies text file
+                        {   //create writer for ticket receipt text file ----> false = append file (re-write each iteration)
                             BufferedWriter bw = new BufferedWriter(new FileWriter("./resources/ticket.txt", false));
 
-                            //write new upcoming show & date to file
+                            //write details into receipt
                             bw.write("----Ticket Receipt----\n");
                             bw.write("Tickets for " + cusFirstName.toUpperCase() + "!\n");
                             bw.write("Customer ID: " + attendee.getId() + "\n");
