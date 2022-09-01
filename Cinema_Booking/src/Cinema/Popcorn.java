@@ -6,6 +6,7 @@ package Cinema;
  */
 public class Popcorn implements Food {
     public void itemCost() {
+        System.out.println("Press 0 to Skip!\n");
         System.out.println("Popcorn:");
         System.out.println("1.   Small:   $8.50");
         System.out.println("2.   Medium:  $9.00");

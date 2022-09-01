@@ -8,8 +8,11 @@ public class FoodCost {
 
     public double totalCost(int choice) {
 
+        //switch food & drink choice
         switch (choice)
         {
+            case 0: 
+                return 0.0;
             case 1:
                 return 8.50;
             case 2:
