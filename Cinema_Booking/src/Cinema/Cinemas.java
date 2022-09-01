@@ -15,11 +15,16 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
+import java.text.DecimalFormat;
 
 public class Cinemas {
+    
+    //2 decimal format
+    private static final DecimalFormat df = new DecimalFormat("0.00");
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
+        
 
         //List of bookings, customers, movies and theatres.
         ArrayList<Booking> bookings = new ArrayList<Booking>();
@@ -27,18 +32,37 @@ public class Cinemas {
         ArrayList<Movie> movies = new ArrayList<Movie>();
         ArrayList<FilmTheatre> theatres = new ArrayList<FilmTheatre>();
 
-        // Event cinemas for testing purposes
-        FilmTheatre eventCinemas = new FilmTheatre(1, "Star Cinemas");
-        eventCinemas.rowCreation(1, 15, 15);
-        theatres.add(eventCinemas);
+        // Star cinemas
+        FilmTheatre starCinemas = new FilmTheatre(1, "Star Cinemas");
+        starCinemas.rowCreation(1, 15, 15);
+        theatres.add(starCinemas);
 
         // movies for testing purposes
-        movies.add(new Movie("BULLET TRAIN", "03/08/2022", theatres.get(0)));
-        movies.add(new Movie("THOR: LOVE AND THUNDER ", "06/07/2022", theatres.get(0)));
-        movies.add(new Movie("NOPE", "11/08/2022", theatres.get(0)));
-        movies.add(new Movie("TOP GUN: MAVERICK ", "24/05/2022", theatres.get(0)));
-        movies.add(new Movie("ELVIS", "23/06/2022", theatres.get(0)));
-        movies.add(new Movie("MINIONS: THE RISE OF GRU ", "24/06/2022", theatres.get(0)));
+        movies.add(new Movie("BULLET TRAIN", "03/08/2022", theatres.get(0), "R16: Graphic Violence & offensive language\n"
+                + "An original movie event, Bullet Train is a fun, delirious action-thriller from the director of Deadpool 2, David Leitch. Brad Pitt headlines an ensemble cast of eclectic, diverse assassins – all with connected yet conflicting objectives – set against the backdrop of a non-stop ride through modern-day Japan.\n"
+                + "Release Date:	03/08/2022\n"
+                + "Running Time:	126 mins"));
+        movies.add(new Movie("THOR: LOVE AND THUNDER ", "06/07/2022", theatres.get(0), "M: Violence\n"
+                + "The film finds Thor on a journey unlike anything he’s ever faced – a quest for inner peace. But his retirement is interrupted by a galactic killer known as Gorr the God Butcher, who seeks the extinction of the gods.\n"
+                + "Release Date:	06/07/2022\n"
+                + "Running Time:	119 mins"));
+        movies.add(new Movie("NOPE", "11/08/2022", theatres.get(0), "R13: Violence, horror & offensive language\n"
+                + "Oscar® winner Jordan Peele disrupted and redefined modern horror with Get Out and then Us. Now, he reimagines the summer movie with a new pop nightmare: the expansive horror epic, Nope.\n"
+                + "Release Date:	11/08/2022\n"
+                + "Running Time:	130 mins"));
+        movies.add(new Movie("TOP GUN: MAVERICK ", "24/05/2022", theatres.get(0), "M: Violence & offensive language\n"
+                + "After more than thirty years of service as one of the Navy’s top aviators, Pete “Maverick” Mitchell (Tom Cruise) is where he belongs, pushing the envelope as a courageous test pilot and dodging the advancement in rank that would ground him.\n"
+                + "Release Date:	24/05/2022\n"
+                + "Running Time:	130 mins"));
+        movies.add(new Movie("ELVIS", "23/06/2022", theatres.get(0), "M: Drug use\n"
+                + "Oscar-nominated filmmaker Luhrmann (“The Great Gatsby,” “Moulin Rouge!”) explores the life and music of Presley, through the prism of his complicated relationship with his enigmatic manager, Colonel Tom Parker, played in the film by two-time Oscar winner Tom Hanks (“Forrest Gump,” “Philadelphia”). The story will delve into their complex dynamic spanning over 20 years, from Presley’s rise to fame to his unprecedented stardom, against the backdrop of the evolving cultural landscape and loss of innocence in America.\n"
+                + "Release Date:	23/06/2022\n"
+                + "Running Time:	159 mins"));
+        movies.add(new Movie("MINIONS: THE RISE OF GRU", "24/06/2022", theatres.get(0), "PG: Violence\n"
+                + "In the 1970s, young Gru tries to join a group of supervillains called the Vicious 6 after they oust their leader -- the legendary fighter Wild Knuckles. When the interview turns disastrous, Gru and his Minions go on the run with the Vicious 6 hot on their tails. Luckily, he finds an unlikely source for guidance -- Wild Knuckles himself -- and soon discovers that even bad guys need a little help from their friends.\n"
+                + "Release Date:	24/06/2022\n"
+                + "Running Time:	90 mins"));
+        movies.add(new Movie("TESTING", "12/12/2023", theatres.get(0), "Movie Description for Testing Purposes"));
 
         // Options for user
         int choice = 0;
@@ -48,12 +72,11 @@ public class Cinemas {
             //Greeting & 5 options for employee selection.
             //Option 10 for manager, username: admin, password: password
 
-            System.out.println("𝐖𝐞𝐥𝐜𝐨𝐦𝐞 𝐭𝐨 𝐒𝐭𝐚𝐫 𝐂𝐢𝐧𝐞𝐦𝐚𝐬!\n");
+            System.out.println("Welcome to Star Cinemas!\n");
             System.out.println("Now Showing!               -    Press 1");
             System.out.println("Coming Soon!               -    Press 2");
             System.out.println("Make a Booking!            -    Press 3");
-            System.out.println("Cancellations              -    Press 4");
-            //Login Screen -> Find in File -> Cancel Booking
+            System.out.println("Cancellations!             -    Press 4");
             System.out.println("Exit                       -    Press 5\n\n");
             System.out.println("Manager Functions          -    Press 10!");
 
@@ -98,13 +121,15 @@ public class Cinemas {
 
                             //create array to hold each name of movie split by new line
                             String[] currentMovies = s.split("\n");
+
                             for (int i = 0; i < currentMovies.length; i++)
                             {
                                 System.out.println(currentMovies[i]);
+                                System.out.println("");
+
                             }
 
                         }
-
                         //close br
                         br.close();
 
@@ -112,9 +137,18 @@ public class Cinemas {
                     {
                         e.printStackTrace();
                     }
+                    
+                    System.out.println("//------------Extra Details------------\\\\" + "\n");
 
+                    for (int k = 0; k < movies.size(); k++)
+                    {
+                        
+                        System.out.println(movies.get(k).getMovieName());
+                        System.out.println(movies.get(k).getDescription());
+                        System.out.println("");
+                    }
                     //Offer option to make a booking for one of these movies
-                    System.out.println("\nPress 3 For Bookings!\n");
+                    System.out.println("Press 3 For Bookings!\n");
                     break;
                 /// ------------------------------------------------------------------------------------------ \\\
                 case 2:
@@ -171,30 +205,6 @@ public class Cinemas {
                         Random ran = new Random();
                         int customerId = ran.nextInt(300);
 
-//                        //Query User for Login or Register if new Customer
-//                        System.out.println("Press 1 to Login");
-//                        System.out.println("Press 2 to Register");
-//                        
-                        //If user accidentially clicks Register
-                        //Return them to Login Screen
-//                        //Query user for first  & last name, email address, phone no
-//                        System.out.println("---Register---\n");
-//                        //Read firstName
-//                        String firstName = "";
-//                        System.out.print("First Name?:  ");
-//                        firstName = scan.nextLine();
-//                        //Read lastName
-//                        String lastName = "";
-//                        System.out.print("Last Name?: ");
-//                        lastName = scan.nextLine();
-//                        //Read Email Address
-//                        String email = "";
-//                        System.out.print("Email Address?: ");
-//                        email = scan.nextLine();
-//                        //Read Phone Number as String
-//                        String phoneNo = "";
-//                        System.out.print("Phone Number?: ");
-//                        phoneNo = scan.nextLine();
                         //Create customer object
                         // Customer attendee = new Customer(customerId, firstName, lastName, email, phoneNo);
                         Customer attendee = new Customer(customerId);
@@ -207,7 +217,6 @@ public class Cinemas {
                         {
                             int movieNo = i + 1;
                             System.out.println(movieNo + ": " + movies.get(i).getMovieName() + "\n");
-
                         }
 
                         //user selection
@@ -223,12 +232,17 @@ public class Cinemas {
                         //to rebook more seats loop variable
                         int anotherSeat = 0;
 
+                        //create arrayList for Row & Seat for print ticket output
+                        ArrayList<Integer> rowList = new ArrayList<>();
+                        ArrayList<Integer> seatList = new ArrayList<>();
+
                         //do while loop to print seats & make bookings
                         do
                         {
                             movies.get(chosenShow - 1).getTheatre().seatingMap();
                             System.out.print("Row?: ");
                             int row = Integer.valueOf(scan.nextLine());
+
                             System.out.print("Seat?: ");
                             int seat = Integer.valueOf(scan.nextLine());
 
@@ -240,6 +254,8 @@ public class Cinemas {
                             {
                                 bookings.add(book);
                                 System.out.println("\nReservation made!");
+                                rowList.add(row);
+                                seatList.add(seat);
                             } else
                             {
                                 System.out.println("\nSorry! seat is not available");
@@ -300,9 +316,6 @@ public class Cinemas {
 
                         } while (foodChoice != 0);
 
-                        System.out.println("\nThank you! \n");
-                        System.out.println("---------Checkout---------\n");
-
                         double tCost = 0.0;
 
                         //print booking cost
@@ -313,12 +326,32 @@ public class Cinemas {
                                 tCost += book.getCost();
                             }
                         }
-                        System.out.println("Customer ID: " + attendee.getId());
-                        System.out.println("Food & Drink Cost: $" + totalCost + "0");
-                        System.out.println("Ticket Cost:       $" + tCost + "0");
-                        System.out.println("-----------------------------");
-                        System.out.println("Total:             $" + (totalCost + tCost + "0 NZD\n"));
 
+                        System.out.println("Enter First Name to Finalize Booking:");
+
+                        //Read firstName for Ticket Print output
+                        String cusFirstName = "";
+                        System.out.print("First Name?:  ");
+                        cusFirstName = scan.nextLine();
+
+                        //Ticket Output
+                        System.out.println("\nThank you " + cusFirstName + "!\n");
+                        System.out.println("----------Checkout----------\n");
+                        System.out.println("Tickets for " + cusFirstName.toUpperCase() + "!");
+                        System.out.println("Customer ID: " + attendee.getId() + "\n");
+                        for (int i = 0; i < rowList.size(); i++)
+                        {
+                            System.out.println("Row: " + rowList.get(i) + ", Seat: " + seatList.get(i) + " ");
+                        }
+                        System.out.println("Food & Drink Cost: $" + df.format(totalCost));
+                        System.out.println("Ticket Cost:       $" + df.format(tCost));
+                        System.out.println("-----------------------------");
+                        
+                        //calculate total cost
+                        double totalPrice = tCost + totalCost;
+                        System.out.println("Total:             $" + (df.format(totalPrice) + " NZD\n"));
+
+                        
                 } catch (IndexOutOfBoundsException e)
                 {
                     System.out.println("Invalid input! Try again \n");
@@ -332,9 +365,9 @@ public class Cinemas {
                 case 4:
                     //if choice is 4
                     //cancel reservation
-                    System.out.println("---Cancel booking---");
+                    System.out.println("\n-----Cancellations-----");
                     //user must have booking to use this function, input customer ID generated from booking prior
-                    System.out.println("Enter ID: ");
+                    System.out.println("For Booking Cancellation please enter Customer ID: ");
                     int givenId = 0;
 
                     //try-catch block for user ID input
@@ -377,17 +410,17 @@ public class Cinemas {
                 case 5:
                     //if choice is 5
                     //Greeting and quit
-                    System.out.println("\nThank you for using Star Cinemas Booking System!");
+                    System.out.println("\nThank you for using Star Cinemas!");
                     System.exit(0);
                 /// ------------------------------------------------------------------------------------------ \\\
 
                 case 10:
                     //if choice is 10
                     // Manager login
-                    System.out.println("---Login---\n");
+                    System.out.println("\n-----Login-----\n");
                     //Read username (admin)
                     String userName = "";
-                    System.out.print("Username:  ");
+                    System.out.print("Username: ");
                     userName = scan.nextLine();
                     //Read password (password)
                     String password = "";
@@ -399,6 +432,7 @@ public class Cinemas {
 
                     //For example purposes username = admin, password = password
                     //if appropriate username & password given, enter portal
+                    System.out.println("");
                     if (userName.equals("admin") && password.equals("password"))
                     {
                         //do-while portal functions
@@ -406,7 +440,7 @@ public class Cinemas {
                         {
 
                             //options greeting
-                            System.out.println("Welcome to Manager Portal\n");
+                            System.out.println("Welcome to Star Cinemas Manager Portal\n");
                             System.out.println("Press 1 to remove a current show");
                             System.out.println("Press 2 to add a current show");
                             System.out.println("Press 3 to add an upcoming show");
@@ -422,7 +456,7 @@ public class Cinemas {
                                     //if 1 selected, remove a current show from file and arraylist
                                     case 1:
                                         //print current shows
-                                        System.out.println("---Remove Current Shows---\n");
+                                        System.out.println("-----Remove Current Shows-----\n");
                                         for (int i = 0; i < movies.size(); i++)
                                         {
                                             int movieNumber = i + 1;
@@ -489,13 +523,16 @@ public class Cinemas {
                                         String movieDate = "";
                                         System.out.print("Enter movie release date: ");
                                         movieDate = scan.nextLine();
+                                        String movieDesc = "";
+                                        System.out.println("Enter movie description: ");
+                                        movieDesc = scan.nextLine();
                                         System.out.println();
 
                                         //add new show to arrayList
-                                        movies.add(new Movie(movieName, movieDate, theatres.get(0)));
+                                        movies.add(new Movie(movieName, movieDate, theatres.get(0), movieDesc));
 
                                         try
-                                        {   //create writer for upcoming movies text file
+                                        {   //create writer for current movies text file
                                             BufferedWriter bw = new BufferedWriter(new FileWriter("./resources/current_movies.txt", true));
 
                                             //write new current show to file
